@@ -45,7 +45,10 @@ class App extends React.Component {
         <button onClick={this.handlePropSending}>
           Sending Props to Header
         </button>
-        <Header menus={["home", "about", "services"]} prop={this.state.prop} />
+        <Header
+          menus={["home", "about", "services", "blog"]}
+          prop={this.state.prop}
+        />
         <h2>{this.state.money}</h2>
       </div>
     );

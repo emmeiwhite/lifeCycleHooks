@@ -5,7 +5,8 @@ export default class Header extends Component {
     super(props);
 
     this.state = {
-      logo: "EmmeiSoft"
+      logo: "EmmeiSoft",
+      people: 0
     };
     console.log("Header Component Constructor");
   }
@@ -19,13 +20,37 @@ export default class Header extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
     console.log("ComponentWillReceiveProps Header Component");
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("shouldComponentUpdate of Header");
+    // console.log(nextProps);
+
+    console.log("prop passed is :" + this.props.prop);
+
+    if (this.state.people <= 10) {
+      return true;
+    } else {
+      console.log("Component cannot render now, because this.state.people=11");
+      return false;
+    }
+  }
+  componentWillUpdate() {
+    console.log("componentWillUpdate - COMPONENT UPDATED");
   }
 
   changeLogoHandler = () => {
     this.setState({
       logo: "RatherImran"
+    });
+  };
+
+  peopleUpdatehandler = () => {
+    this.setState({
+      ...this.state,
+      people: this.state.people + 1
     });
   };
 
@@ -40,6 +65,10 @@ export default class Header extends Component {
         ))}
 
         <button onClick={this.changeLogoHandler}>Change Logo</button>
+        <button onClick={this.peopleUpdatehandler}>
+          10 People Allowed - Click
+        </button>
+        <span>{this.state.people}</span>
       </div>
     );
   }
