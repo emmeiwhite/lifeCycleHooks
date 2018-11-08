@@ -35,8 +35,8 @@ export default class Header extends Component {
       <div>
         <h3>Numerical Prop : {this.props.prop}</h3>
         <h1>{this.state.logo}- World's Awesome Header</h1>
-        {this.props.menus.map(menu => (
-          <li>{menu}</li>
+        {this.props.menus.map((menu, index) => (
+          <li key={index}>{menu}</li>
         ))}
 
         <button onClick={this.changeLogoHandler}>Change Logo</button>
