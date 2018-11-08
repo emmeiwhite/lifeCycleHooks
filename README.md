@@ -1,2 +1,0 @@
-# lifeCycleHooks
-Created with CodeSandbox
